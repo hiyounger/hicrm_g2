@@ -1,14 +1,12 @@
-
 package com.newroad.controller;
-
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
+import org.springframework.web.bind.annotation.ResponseBody;
+@Controller
+@RequestMapping("/test")
 public class TestHtml {
-    @RequestMapping("helloindex")
+    @RequestMapping("/t1")
     public String hello(){
-        return "hello";
-
+        return "index";
     }
 }
