@@ -98,4 +98,101 @@
       </if>
     </trim>
   </insert>
+  <insert id="insert" parameterType="com.newroad.entity.SysUser">
+    insert into tb_system_user (id, username, password, 
+      CREATETIME, EMAIL, PHONE, 
+      salt, SORTNUM, STATUS, 
+      UPDATETIME, USERNOTE, CREATEBY, 
+      UPDATEBY)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=DATE}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{sortnum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=DATE}, #{usernote,jdbcType=VARCHAR}, #{createby,jdbcType=INTEGER}, 
+      #{updateby,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.SysUser">
+    insert into tb_system_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="phone != null">
+        PHONE,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="sortnum != null">
+        SORTNUM,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="usernote != null">
+        USERNOTE,
+      </if>
+      <if test="createby != null">
+        CREATEBY,
+      </if>
+      <if test="updateby != null">
+        UPDATEBY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnum != null">
+        #{sortnum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="usernote != null">
+        #{usernote,jdbcType=VARCHAR},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
 </mapper>
