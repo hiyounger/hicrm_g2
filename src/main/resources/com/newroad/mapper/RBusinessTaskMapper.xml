@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.RBusinessTaskMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.RBusinessTask">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="business_id" jdbcType="INTEGER" property="businessId" />
+    <result column="task_id" jdbcType="INTEGER" property="taskId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, business_id, task_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_r_business_task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.RBusinessTask">
+    insert into tb_crm_r_business_task (id, business_id, task_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{businessId,jdbcType=INTEGER}, #{taskId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.RBusinessTask">
+    insert into tb_crm_r_business_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="businessId != null">
+        business_id,
+      </if>
+      <if test="taskId != null">
+        task_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="businessId != null">
+        #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Role">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="CREATETIME" jdbcType="DATE" property="createtime" />
+    <result column="ROLENAME" jdbcType="VARCHAR" property="rolename" />
+    <result column="ROLENOTE" jdbcType="VARCHAR" property="rolenote" />
+    <result column="SORTNUM" jdbcType="INTEGER" property="sortnum" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="UPDATETIME" jdbcType="DATE" property="updatetime" />
+    <result column="CREATEBY" jdbcType="INTEGER" property="createby" />
+    <result column="UPDATEBY" jdbcType="INTEGER" property="updateby" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, CREATETIME, ROLENAME, ROLENOTE, SORTNUM, STATUS, UPDATETIME, CREATEBY, UPDATEBY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_system_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Role">
+    insert into tb_system_role (id, CREATETIME, ROLENAME, 
+      ROLENOTE, SORTNUM, STATUS, 
+      UPDATETIME, CREATEBY, UPDATEBY
+      )
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=DATE}, #{rolename,jdbcType=VARCHAR}, 
+      #{rolenote,jdbcType=VARCHAR}, #{sortnum,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=DATE}, #{createby,jdbcType=INTEGER}, #{updateby,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Role">
+    insert into tb_system_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="rolename != null">
+        ROLENAME,
+      </if>
+      <if test="rolenote != null">
+        ROLENOTE,
+      </if>
+      <if test="sortnum != null">
+        SORTNUM,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="createby != null">
+        CREATEBY,
+      </if>
+      <if test="updateby != null">
+        UPDATEBY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="rolename != null">
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="rolenote != null">
+        #{rolenote,jdbcType=VARCHAR},
+      </if>
+      <if test="sortnum != null">
+        #{sortnum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

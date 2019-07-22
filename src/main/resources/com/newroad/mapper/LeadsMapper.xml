@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.LeadsMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Leads">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="owner_user_id" jdbcType="INTEGER" property="ownerUserId" />
+    <result column="creator_user_id" jdbcType="INTEGER" property="creatorUserId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="contacts_name" jdbcType="VARCHAR" property="contactsName" />
+    <result column="saltname" jdbcType="VARCHAR" property="saltname" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="delete_user_id" jdbcType="INTEGER" property="deleteUserId" />
+    <result column="delete_time" jdbcType="DATE" property="deleteTime" />
+    <result column="is_transformed" jdbcType="INTEGER" property="isTransformed" />
+    <result column="transform_user_id" jdbcType="INTEGER" property="transformUserId" />
+    <result column="contacts_id" jdbcType="INTEGER" property="contactsId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="business_id" jdbcType="INTEGER" property="businessId" />
+    <result column="nextstep" jdbcType="VARCHAR" property="nextstep" />
+    <result column="nextstep_time" jdbcType="DATE" property="nextstepTime" />
+    <result column="have_time" jdbcType="DATE" property="haveTime" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="leadnote" jdbcType="VARCHAR" property="leadnote" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner_user_id, creator_user_id, name, position, contacts_name, saltname, mobile, 
+    email, create_time, update_time, delete_status, delete_user_id, delete_time, is_transformed, 
+    transform_user_id, contacts_id, customer_id, business_id, nextstep, nextstep_time, 
+    have_time, address, source, leadnote
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_leads
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Leads">
+    insert into tb_crm_leads (id, owner_user_id, creator_user_id, 
+      name, position, contacts_name, 
+      saltname, mobile, email, 
+      create_time, update_time, delete_status, 
+      delete_user_id, delete_time, is_transformed, 
+      transform_user_id, contacts_id, customer_id, 
+      business_id, nextstep, nextstep_time, 
+      have_time, address, source, 
+      leadnote)
+    values (#{id,jdbcType=INTEGER}, #{ownerUserId,jdbcType=INTEGER}, #{creatorUserId,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{contactsName,jdbcType=VARCHAR}, 
+      #{saltname,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{deleteStatus,jdbcType=INTEGER}, 
+      #{deleteUserId,jdbcType=INTEGER}, #{deleteTime,jdbcType=DATE}, #{isTransformed,jdbcType=INTEGER}, 
+      #{transformUserId,jdbcType=INTEGER}, #{contactsId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, 
+      #{businessId,jdbcType=INTEGER}, #{nextstep,jdbcType=VARCHAR}, #{nextstepTime,jdbcType=DATE}, 
+      #{haveTime,jdbcType=DATE}, #{address,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{leadnote,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Leads">
+    insert into tb_crm_leads
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ownerUserId != null">
+        owner_user_id,
+      </if>
+      <if test="creatorUserId != null">
+        creator_user_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="contactsName != null">
+        contacts_name,
+      </if>
+      <if test="saltname != null">
+        saltname,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="deleteUserId != null">
+        delete_user_id,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="isTransformed != null">
+        is_transformed,
+      </if>
+      <if test="transformUserId != null">
+        transform_user_id,
+      </if>
+      <if test="contactsId != null">
+        contacts_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="businessId != null">
+        business_id,
+      </if>
+      <if test="nextstep != null">
+        nextstep,
+      </if>
+      <if test="nextstepTime != null">
+        nextstep_time,
+      </if>
+      <if test="haveTime != null">
+        have_time,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="leadnote != null">
+        leadnote,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ownerUserId != null">
+        #{ownerUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorUserId != null">
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="contactsName != null">
+        #{contactsName,jdbcType=VARCHAR},
+      </if>
+      <if test="saltname != null">
+        #{saltname,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deleteUserId != null">
+        #{deleteUserId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=DATE},
+      </if>
+      <if test="isTransformed != null">
+        #{isTransformed,jdbcType=INTEGER},
+      </if>
+      <if test="transformUserId != null">
+        #{transformUserId,jdbcType=INTEGER},
+      </if>
+      <if test="contactsId != null">
+        #{contactsId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="businessId != null">
+        #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="nextstep != null">
+        #{nextstep,jdbcType=VARCHAR},
+      </if>
+      <if test="nextstepTime != null">
+        #{nextstepTime,jdbcType=DATE},
+      </if>
+      <if test="haveTime != null">
+        #{haveTime,jdbcType=DATE},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="leadnote != null">
+        #{leadnote,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

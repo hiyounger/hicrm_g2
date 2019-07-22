@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.RBusinessProductMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.RBusinessProduct">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="business_id" jdbcType="INTEGER" property="businessId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="sales_price" jdbcType="REAL" property="salesPrice" />
+    <result column="estimate_price" jdbcType="REAL" property="estimatePrice" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="discount_rate" jdbcType="DOUBLE" property="discountRate" />
+    <result column="tax_rate" jdbcType="DOUBLE" property="taxRate" />
+    <result column="unit_price" jdbcType="REAL" property="unitPrice" />
+    <result column="subtotal" jdbcType="REAL" property="subtotal" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="subtotal_val" jdbcType="REAL" property="subtotalVal" />
+    <result column="discount_price" jdbcType="REAL" property="discountPrice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, business_id, product_id, sales_price, estimate_price, amount, discount_rate, 
+    tax_rate, unit_price, subtotal, description, subtotal_val, discount_price
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_r_business_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.RBusinessProduct">
+    insert into tb_crm_r_business_product (id, business_id, product_id, 
+      sales_price, estimate_price, amount, 
+      discount_rate, tax_rate, unit_price, 
+      subtotal, description, subtotal_val, 
+      discount_price)
+    values (#{id,jdbcType=INTEGER}, #{businessId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
+      #{salesPrice,jdbcType=REAL}, #{estimatePrice,jdbcType=REAL}, #{amount,jdbcType=INTEGER}, 
+      #{discountRate,jdbcType=DOUBLE}, #{taxRate,jdbcType=DOUBLE}, #{unitPrice,jdbcType=REAL}, 
+      #{subtotal,jdbcType=REAL}, #{description,jdbcType=VARCHAR}, #{subtotalVal,jdbcType=REAL}, 
+      #{discountPrice,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.RBusinessProduct">
+    insert into tb_crm_r_business_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="businessId != null">
+        business_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="estimatePrice != null">
+        estimate_price,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="discountRate != null">
+        discount_rate,
+      </if>
+      <if test="taxRate != null">
+        tax_rate,
+      </if>
+      <if test="unitPrice != null">
+        unit_price,
+      </if>
+      <if test="subtotal != null">
+        subtotal,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="subtotalVal != null">
+        subtotal_val,
+      </if>
+      <if test="discountPrice != null">
+        discount_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="businessId != null">
+        #{businessId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=REAL},
+      </if>
+      <if test="estimatePrice != null">
+        #{estimatePrice,jdbcType=REAL},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="discountRate != null">
+        #{discountRate,jdbcType=DOUBLE},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=DOUBLE},
+      </if>
+      <if test="unitPrice != null">
+        #{unitPrice,jdbcType=REAL},
+      </if>
+      <if test="subtotal != null">
+        #{subtotal,jdbcType=REAL},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="subtotalVal != null">
+        #{subtotalVal,jdbcType=REAL},
+      </if>
+      <if test="discountPrice != null">
+        #{discountPrice,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

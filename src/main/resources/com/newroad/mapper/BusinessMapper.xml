@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.BusinessMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Business">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="origin" jdbcType="VARCHAR" property="origin" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="estimate_price" jdbcType="INTEGER" property="estimatePrice" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="creator_user_id" jdbcType="INTEGER" property="creatorUserId" />
+    <result column="owner_user_id" jdbcType="INTEGER" property="ownerUserId" />
+    <result column="gain_rate" jdbcType="DOUBLE" property="gainRate" />
+    <result column="total_amount" jdbcType="INTEGER" property="totalAmount" />
+    <result column="subtotal_val" jdbcType="REAL" property="subtotalVal" />
+    <result column="discount_price" jdbcType="REAL" property="discountPrice" />
+    <result column="sales_price" jdbcType="REAL" property="salesPrice" />
+    <result column="due_date" jdbcType="DATE" property="dueDate" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="update_user_id" jdbcType="INTEGER" property="updateUserId" />
+    <result column="status_id" jdbcType="INTEGER" property="statusId" />
+    <result column="total_price" jdbcType="REAL" property="totalPrice" />
+    <result column="nextstep" jdbcType="VARCHAR" property="nextstep" />
+    <result column="nextstep_time" jdbcType="DATE" property="nextstepTime" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="delete_user_id" jdbcType="INTEGER" property="deleteUserId" />
+    <result column="delete_time" jdbcType="DATE" property="deleteTime" />
+    <result column="contacts_id" jdbcType="INTEGER" property="contactsId" />
+    <result column="contract_address" jdbcType="VARCHAR" property="contractAddress" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, origin, type, estimate_price, customer_id, creator_user_id, owner_user_id, 
+    gain_rate, total_amount, subtotal_val, discount_price, sales_price, due_date, create_time, 
+    update_time, update_user_id, status_id, total_price, nextstep, nextstep_time, delete_status, 
+    delete_user_id, delete_time, contacts_id, contract_address, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_business
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Business">
+    insert into tb_crm_business (id, name, origin, 
+      type, estimate_price, customer_id, 
+      creator_user_id, owner_user_id, gain_rate, 
+      total_amount, subtotal_val, discount_price, 
+      sales_price, due_date, create_time, 
+      update_time, update_user_id, status_id, 
+      total_price, nextstep, nextstep_time, 
+      delete_status, delete_user_id, delete_time, 
+      contacts_id, contract_address, description
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{origin,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{estimatePrice,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, 
+      #{creatorUserId,jdbcType=INTEGER}, #{ownerUserId,jdbcType=INTEGER}, #{gainRate,jdbcType=DOUBLE}, 
+      #{totalAmount,jdbcType=INTEGER}, #{subtotalVal,jdbcType=REAL}, #{discountPrice,jdbcType=REAL}, 
+      #{salesPrice,jdbcType=REAL}, #{dueDate,jdbcType=DATE}, #{createTime,jdbcType=DATE}, 
+      #{updateTime,jdbcType=DATE}, #{updateUserId,jdbcType=INTEGER}, #{statusId,jdbcType=INTEGER}, 
+      #{totalPrice,jdbcType=REAL}, #{nextstep,jdbcType=VARCHAR}, #{nextstepTime,jdbcType=DATE}, 
+      #{deleteStatus,jdbcType=INTEGER}, #{deleteUserId,jdbcType=INTEGER}, #{deleteTime,jdbcType=DATE}, 
+      #{contactsId,jdbcType=INTEGER}, #{contractAddress,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Business">
+    insert into tb_crm_business
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="origin != null">
+        origin,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="estimatePrice != null">
+        estimate_price,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="creatorUserId != null">
+        creator_user_id,
+      </if>
+      <if test="ownerUserId != null">
+        owner_user_id,
+      </if>
+      <if test="gainRate != null">
+        gain_rate,
+      </if>
+      <if test="totalAmount != null">
+        total_amount,
+      </if>
+      <if test="subtotalVal != null">
+        subtotal_val,
+      </if>
+      <if test="discountPrice != null">
+        discount_price,
+      </if>
+      <if test="salesPrice != null">
+        sales_price,
+      </if>
+      <if test="dueDate != null">
+        due_date,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="statusId != null">
+        status_id,
+      </if>
+      <if test="totalPrice != null">
+        total_price,
+      </if>
+      <if test="nextstep != null">
+        nextstep,
+      </if>
+      <if test="nextstepTime != null">
+        nextstep_time,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="deleteUserId != null">
+        delete_user_id,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+      <if test="contactsId != null">
+        contacts_id,
+      </if>
+      <if test="contractAddress != null">
+        contract_address,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null">
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatePrice != null">
+        #{estimatePrice,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorUserId != null">
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="ownerUserId != null">
+        #{ownerUserId,jdbcType=INTEGER},
+      </if>
+      <if test="gainRate != null">
+        #{gainRate,jdbcType=DOUBLE},
+      </if>
+      <if test="totalAmount != null">
+        #{totalAmount,jdbcType=INTEGER},
+      </if>
+      <if test="subtotalVal != null">
+        #{subtotalVal,jdbcType=REAL},
+      </if>
+      <if test="discountPrice != null">
+        #{discountPrice,jdbcType=REAL},
+      </if>
+      <if test="salesPrice != null">
+        #{salesPrice,jdbcType=REAL},
+      </if>
+      <if test="dueDate != null">
+        #{dueDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="statusId != null">
+        #{statusId,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrice != null">
+        #{totalPrice,jdbcType=REAL},
+      </if>
+      <if test="nextstep != null">
+        #{nextstep,jdbcType=VARCHAR},
+      </if>
+      <if test="nextstepTime != null">
+        #{nextstepTime,jdbcType=DATE},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deleteUserId != null">
+        #{deleteUserId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=DATE},
+      </if>
+      <if test="contactsId != null">
+        #{contactsId,jdbcType=INTEGER},
+      </if>
+      <if test="contractAddress != null">
+        #{contractAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

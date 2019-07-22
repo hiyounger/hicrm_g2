@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.ContactsMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Contacts">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="creator_user_id" jdbcType="INTEGER" property="creatorUserId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="saltname" jdbcType="VARCHAR" property="saltname" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="qq_no" jdbcType="VARCHAR" property="qqNo" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="zip_code" jdbcType="VARCHAR" property="zipCode" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="delete_user_id" jdbcType="INTEGER" property="deleteUserId" />
+    <result column="delete_time" jdbcType="DATE" property="deleteTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, creator_user_id, name, post, department, sex, saltname, telephone, email, qq_no, 
+    address, zip_code, description, customer_id, create_time, update_time, delete_status, 
+    delete_user_id, delete_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_contacts
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Contacts">
+    insert into tb_crm_contacts (id, creator_user_id, name, 
+      post, department, sex, 
+      saltname, telephone, email, 
+      qq_no, address, zip_code, 
+      description, customer_id, create_time, 
+      update_time, delete_status, delete_user_id, 
+      delete_time)
+    values (#{id,jdbcType=INTEGER}, #{creatorUserId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{post,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{saltname,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{qqNo,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{zipCode,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{customerId,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, 
+      #{updateTime,jdbcType=DATE}, #{deleteStatus,jdbcType=INTEGER}, #{deleteUserId,jdbcType=INTEGER}, 
+      #{deleteTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Contacts">
+    insert into tb_crm_contacts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="creatorUserId != null">
+        creator_user_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="saltname != null">
+        saltname,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="qqNo != null">
+        qq_no,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="zipCode != null">
+        zip_code,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="deleteUserId != null">
+        delete_user_id,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="creatorUserId != null">
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="saltname != null">
+        #{saltname,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="qqNo != null">
+        #{qqNo,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null">
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deleteUserId != null">
+        #{deleteUserId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

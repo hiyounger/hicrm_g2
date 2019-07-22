@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.TaskMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Task">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="owner_user_id" jdbcType="INTEGER" property="ownerUserId" />
+    <result column="about_users" jdbcType="VARCHAR" property="aboutUsers" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="due_date" jdbcType="DATE" property="dueDate" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="priority" jdbcType="VARCHAR" property="priority" />
+    <result column="send_email" jdbcType="VARCHAR" property="sendEmail" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="creator_user_id" jdbcType="INTEGER" property="creatorUserId" />
+    <result column="create_date" jdbcType="DATE" property="createDate" />
+    <result column="update_date" jdbcType="DATE" property="updateDate" />
+    <result column="isclose" jdbcType="INTEGER" property="isclose" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="delete_user_id" jdbcType="INTEGER" property="deleteUserId" />
+    <result column="delete_time" jdbcType="DATE" property="deleteTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner_user_id, about_users, subject, due_date, status, priority, send_email, 
+    description, creator_user_id, create_date, update_date, isclose, delete_status, delete_user_id, 
+    delete_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_task
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Task">
+    insert into tb_crm_task (id, owner_user_id, about_users, 
+      subject, due_date, status, 
+      priority, send_email, description, 
+      creator_user_id, create_date, update_date, 
+      isclose, delete_status, delete_user_id, 
+      delete_time)
+    values (#{id,jdbcType=INTEGER}, #{ownerUserId,jdbcType=INTEGER}, #{aboutUsers,jdbcType=VARCHAR}, 
+      #{subject,jdbcType=VARCHAR}, #{dueDate,jdbcType=DATE}, #{status,jdbcType=VARCHAR}, 
+      #{priority,jdbcType=VARCHAR}, #{sendEmail,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{creatorUserId,jdbcType=INTEGER}, #{createDate,jdbcType=DATE}, #{updateDate,jdbcType=DATE}, 
+      #{isclose,jdbcType=INTEGER}, #{deleteStatus,jdbcType=INTEGER}, #{deleteUserId,jdbcType=INTEGER}, 
+      #{deleteTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Task">
+    insert into tb_crm_task
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ownerUserId != null">
+        owner_user_id,
+      </if>
+      <if test="aboutUsers != null">
+        about_users,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="dueDate != null">
+        due_date,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="sendEmail != null">
+        send_email,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="creatorUserId != null">
+        creator_user_id,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+      <if test="isclose != null">
+        isclose,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="deleteUserId != null">
+        delete_user_id,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ownerUserId != null">
+        #{ownerUserId,jdbcType=INTEGER},
+      </if>
+      <if test="aboutUsers != null">
+        #{aboutUsers,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="dueDate != null">
+        #{dueDate,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="sendEmail != null">
+        #{sendEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null">
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=DATE},
+      </if>
+      <if test="isclose != null">
+        #{isclose,jdbcType=INTEGER},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="deleteUserId != null">
+        #{deleteUserId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

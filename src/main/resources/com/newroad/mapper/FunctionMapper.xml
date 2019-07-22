@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.FunctionMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Function">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="FUNCCODE" jdbcType="VARCHAR" property="funccode" />
+    <result column="FUNCNAME" jdbcType="VARCHAR" property="funcname" />
+    <result column="FUNCNOTE" jdbcType="VARCHAR" property="funcnote" />
+    <result column="FUNCTYPE" jdbcType="INTEGER" property="functype" />
+    <result column="FUNCURL" jdbcType="VARCHAR" property="funcurl" />
+    <result column="ICONCLASS" jdbcType="VARCHAR" property="iconclass" />
+    <result column="ICONURL" jdbcType="VARCHAR" property="iconurl" />
+    <result column="PARENTID" jdbcType="INTEGER" property="parentid" />
+    <result column="CREATEBY" jdbcType="INTEGER" property="createby" />
+    <result column="UPDATEBY" jdbcType="INTEGER" property="updateby" />
+    <result column="SORTNUM" jdbcType="INTEGER" property="sortnum" />
+    <result column="UPDATETIME" jdbcType="DATE" property="updatetime" />
+    <result column="CREATETIME" jdbcType="DATE" property="createtime" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, FUNCCODE, FUNCNAME, FUNCNOTE, FUNCTYPE, FUNCURL, ICONCLASS, ICONURL, PARENTID, 
+    CREATEBY, UPDATEBY, SORTNUM, UPDATETIME, CREATETIME, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_system_function
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Function">
+    insert into tb_system_function (id, FUNCCODE, FUNCNAME, 
+      FUNCNOTE, FUNCTYPE, FUNCURL, 
+      ICONCLASS, ICONURL, PARENTID, 
+      CREATEBY, UPDATEBY, SORTNUM, 
+      UPDATETIME, CREATETIME, STATUS
+      )
+    values (#{id,jdbcType=INTEGER}, #{funccode,jdbcType=VARCHAR}, #{funcname,jdbcType=VARCHAR}, 
+      #{funcnote,jdbcType=VARCHAR}, #{functype,jdbcType=INTEGER}, #{funcurl,jdbcType=VARCHAR}, 
+      #{iconclass,jdbcType=VARCHAR}, #{iconurl,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
+      #{createby,jdbcType=INTEGER}, #{updateby,jdbcType=INTEGER}, #{sortnum,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=DATE}, #{createtime,jdbcType=DATE}, #{status,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Function">
+    insert into tb_system_function
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="funccode != null">
+        FUNCCODE,
+      </if>
+      <if test="funcname != null">
+        FUNCNAME,
+      </if>
+      <if test="funcnote != null">
+        FUNCNOTE,
+      </if>
+      <if test="functype != null">
+        FUNCTYPE,
+      </if>
+      <if test="funcurl != null">
+        FUNCURL,
+      </if>
+      <if test="iconclass != null">
+        ICONCLASS,
+      </if>
+      <if test="iconurl != null">
+        ICONURL,
+      </if>
+      <if test="parentid != null">
+        PARENTID,
+      </if>
+      <if test="createby != null">
+        CREATEBY,
+      </if>
+      <if test="updateby != null">
+        UPDATEBY,
+      </if>
+      <if test="sortnum != null">
+        SORTNUM,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+      <if test="createtime != null">
+        CREATETIME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="funccode != null">
+        #{funccode,jdbcType=VARCHAR},
+      </if>
+      <if test="funcname != null">
+        #{funcname,jdbcType=VARCHAR},
+      </if>
+      <if test="funcnote != null">
+        #{funcnote,jdbcType=VARCHAR},
+      </if>
+      <if test="functype != null">
+        #{functype,jdbcType=INTEGER},
+      </if>
+      <if test="funcurl != null">
+        #{funcurl,jdbcType=VARCHAR},
+      </if>
+      <if test="iconclass != null">
+        #{iconclass,jdbcType=VARCHAR},
+      </if>
+      <if test="iconurl != null">
+        #{iconurl,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null">
+        #{parentid,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="sortnum != null">
+        #{sortnum,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=DATE},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

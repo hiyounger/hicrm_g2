@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Customer">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="owner_user_id" jdbcType="INTEGER" property="ownerUserId" />
+    <result column="creator_user_id" jdbcType="INTEGER" property="creatorUserId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="origin" jdbcType="VARCHAR" property="origin" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="zip_code" jdbcType="VARCHAR" property="zipCode" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="annual_revenue" jdbcType="VARCHAR" property="annualRevenue" />
+    <result column="ownership" jdbcType="VARCHAR" property="ownership" />
+    <result column="rating" jdbcType="VARCHAR" property="rating" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+    <result column="is_locked" jdbcType="INTEGER" property="isLocked" />
+    <result column="delete_user_id" jdbcType="INTEGER" property="deleteUserId" />
+    <result column="delete_time" jdbcType="DATE" property="deleteTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner_user_id, creator_user_id, name, origin, address, zip_code, industry, annual_revenue, 
+    ownership, rating, create_time, update_time, delete_status, is_locked, delete_user_id, 
+    delete_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_customer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Customer">
+    insert into tb_crm_customer (id, owner_user_id, creator_user_id, 
+      name, origin, address, 
+      zip_code, industry, annual_revenue, 
+      ownership, rating, create_time, 
+      update_time, delete_status, is_locked, 
+      delete_user_id, delete_time)
+    values (#{id,jdbcType=INTEGER}, #{ownerUserId,jdbcType=INTEGER}, #{creatorUserId,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{origin,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{zipCode,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, #{annualRevenue,jdbcType=VARCHAR}, 
+      #{ownership,jdbcType=VARCHAR}, #{rating,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, 
+      #{updateTime,jdbcType=DATE}, #{deleteStatus,jdbcType=INTEGER}, #{isLocked,jdbcType=INTEGER}, 
+      #{deleteUserId,jdbcType=INTEGER}, #{deleteTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Customer">
+    insert into tb_crm_customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ownerUserId != null">
+        owner_user_id,
+      </if>
+      <if test="creatorUserId != null">
+        creator_user_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="origin != null">
+        origin,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="zipCode != null">
+        zip_code,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="annualRevenue != null">
+        annual_revenue,
+      </if>
+      <if test="ownership != null">
+        ownership,
+      </if>
+      <if test="rating != null">
+        rating,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="isLocked != null">
+        is_locked,
+      </if>
+      <if test="deleteUserId != null">
+        delete_user_id,
+      </if>
+      <if test="deleteTime != null">
+        delete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ownerUserId != null">
+        #{ownerUserId,jdbcType=INTEGER},
+      </if>
+      <if test="creatorUserId != null">
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="origin != null">
+        #{origin,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null">
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="annualRevenue != null">
+        #{annualRevenue,jdbcType=VARCHAR},
+      </if>
+      <if test="ownership != null">
+        #{ownership,jdbcType=VARCHAR},
+      </if>
+      <if test="rating != null">
+        #{rating,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=INTEGER},
+      </if>
+      <if test="isLocked != null">
+        #{isLocked,jdbcType=INTEGER},
+      </if>
+      <if test="deleteUserId != null">
+        #{deleteUserId,jdbcType=INTEGER},
+      </if>
+      <if test="deleteTime != null">
+        #{deleteTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

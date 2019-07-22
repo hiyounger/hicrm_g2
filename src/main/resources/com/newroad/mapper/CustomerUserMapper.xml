@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.CustomerUserMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.CustomerUser">
+    <result column="CUSTOMERID" jdbcType="INTEGER" property="customerid" />
+    <result column="USERID" jdbcType="INTEGER" property="userid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.newroad.entity.CustomerUser">
+    insert into tb_mid_customer_user (CUSTOMERID, USERID)
+    values (#{customerid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.CustomerUser">
+    insert into tb_mid_customer_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="customerid != null">
+        CUSTOMERID,
+      </if>
+      <if test="userid != null">
+        USERID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="customerid != null">
+        #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

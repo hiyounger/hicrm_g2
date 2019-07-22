@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.MessageMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Message">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="to_user_id" jdbcType="INTEGER" property="toUserId" />
+    <result column="from_user_id" jdbcType="INTEGER" property="fromUserId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="read_time" jdbcType="DATE" property="readTime" />
+    <result column="send_time" jdbcType="DATE" property="sendTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, to_user_id, from_user_id, content, read_time, send_time, status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Message">
+    insert into tb_crm_message (id, to_user_id, from_user_id, 
+      content, read_time, send_time, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{toUserId,jdbcType=INTEGER}, #{fromUserId,jdbcType=INTEGER}, 
+      #{content,jdbcType=VARCHAR}, #{readTime,jdbcType=DATE}, #{sendTime,jdbcType=DATE}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Message">
+    insert into tb_crm_message
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="toUserId != null">
+        to_user_id,
+      </if>
+      <if test="fromUserId != null">
+        from_user_id,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="readTime != null">
+        read_time,
+      </if>
+      <if test="sendTime != null">
+        send_time,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="toUserId != null">
+        #{toUserId,jdbcType=INTEGER},
+      </if>
+      <if test="fromUserId != null">
+        #{fromUserId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="readTime != null">
+        #{readTime,jdbcType=DATE},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

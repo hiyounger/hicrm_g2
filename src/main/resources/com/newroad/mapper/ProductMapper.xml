@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newroad.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.newroad.entity.Product">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="creator_user_id" jdbcType="INTEGER" property="creatorUserId" />
+    <result column="cost_price" jdbcType="REAL" property="costPrice" />
+    <result column="suggested_price" jdbcType="REAL" property="suggestedPrice" />
+    <result column="development_team" jdbcType="VARCHAR" property="developmentTeam" />
+    <result column="development_time" jdbcType="DATE" property="developmentTime" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
+    <result column="update_time" jdbcType="DATE" property="updateTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, category_id, name, creator_user_id, cost_price, suggested_price, development_team, 
+    development_time, link, create_time, update_time, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_crm_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" parameterType="com.newroad.entity.Product">
+    insert into tb_crm_product (id, category_id, name, 
+      creator_user_id, cost_price, suggested_price, 
+      development_team, development_time, link, 
+      create_time, update_time, description
+      )
+    values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{creatorUserId,jdbcType=INTEGER}, #{costPrice,jdbcType=REAL}, #{suggestedPrice,jdbcType=REAL}, 
+      #{developmentTeam,jdbcType=VARCHAR}, #{developmentTime,jdbcType=DATE}, #{link,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.newroad.entity.Product">
+    insert into tb_crm_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="creatorUserId != null">
+        creator_user_id,
+      </if>
+      <if test="costPrice != null">
+        cost_price,
+      </if>
+      <if test="suggestedPrice != null">
+        suggested_price,
+      </if>
+      <if test="developmentTeam != null">
+        development_team,
+      </if>
+      <if test="developmentTime != null">
+        development_time,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorUserId != null">
+        #{creatorUserId,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null">
+        #{costPrice,jdbcType=REAL},
+      </if>
+      <if test="suggestedPrice != null">
+        #{suggestedPrice,jdbcType=REAL},
+      </if>
+      <if test="developmentTeam != null">
+        #{developmentTeam,jdbcType=VARCHAR},
+      </if>
+      <if test="developmentTime != null">
+        #{developmentTime,jdbcType=DATE},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
