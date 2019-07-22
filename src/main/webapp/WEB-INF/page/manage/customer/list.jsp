@@ -16,8 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 
   </head>
-  
-  <%@include file="/WEB-INF/content/script.html" %>
+
+  <%@include file="/WEB-INF/page/script.html" %>
   <body>
     <div>
     	<span>客户视图：</span><span onclick="return whole('manage/customer/CustomerAction_pagination.action')" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true">全部</span>|

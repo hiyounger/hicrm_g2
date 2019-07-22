@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestHtml {
     @RequestMapping("/t1")
     public String hello(){
-        return "index";
+        return "manage/customer/list";
     }
 }
